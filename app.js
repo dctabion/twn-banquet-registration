@@ -5,6 +5,28 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 
+
+/* Set globals */
+if (process.env.NODE_ENV === 'production') {
+  global.myAppVars.server = process.env.APP_URL;
+}
+else {
+  global.myAppVars.server = "http://localhost:3000";
+}
+
+// Set auto email configuration
+global.myAppVars.TWN_GOOGLE_CLIENT_ID = process.env.TWN_GOOGLE_CLIENT_ID;
+global.myAppVars.TWN_GOOGLE_CLIENT_SECRET = process.env.TWN_GOOGLE_CLIENT_SECRET;
+global.myAppVars.TWN_GOOGLE_REFRESH_TOKEN = process.env.TWN_GOOGLE_REFRESH_TOKEN;
+global.myAppVars.TWN_GOOGLE_ACCESS_TOKEN = process.env.TWN_GOOGLE_ACCESS_TOKEN;
+global.myAppVars.TWN_EMAIL_ADMIN = process.env.TWN_EMAIL_ADMIN;
+global.myAppVars.TWN_EMAIL_BOT = process.env.TWN_EMAIL_BOT;
+global.myAppVars.TWN_EMAIL_BOT_USERNAME = global.myAppVars.TWN_EMAIL_BOT.substring(0, global.myAppVars.TWN_EMAIL_BOT.lastIndexOf("@"));
+global.myAppVars.TWN_EMAIL_DEVELOPER = process.env.TWN_EMAIL_DEVELOPER;
+
+/* Connect to database */
+require('./app_api/models/db');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var banquet0818Router = require('./routes/banquet0818');
