@@ -14,9 +14,13 @@ block content
         input#registrantLastName.form-control(type='textarea' placeholder='Last Name')
 
     .form-group
+      label(for='phoneNumber') Phone number
+      input#phoneNumber.form-control(type='tel' title='Phone Number (Format: (219)933-9000)' placeholder='(xxx)xxx-xxxx')
+
+    .form-group
       label(for='exampleFormControlInput1') Email address
       input#exampleFormControlInput1.form-control(type='email' placeholder='name@example.com')
-    
+
     .form-group
       label(for='inputAddress') Address
       input#inputAddress.form-control(type='text' placeholder='1234 Main St')
@@ -31,7 +35,57 @@ block content
         label(for='inputState') State
         select#inputState.form-control
           option(selected='') Choose...
-          option ...
+          option(value='AL') Alabama
+          option(value='AK') Alaska
+          option(value='AZ') Arizona
+          option(value='AR') Arkansas
+          option(value='CA') California
+          option(value='CO') Colorado
+          option(value='CT') Connecticut
+          option(value='DE') Delaware
+          option(value='DC') District Of Columbia
+          option(value='FL') Florida
+          option(value='GA') Georgia
+          option(value='HI') Hawaii
+          option(value='ID') Idaho
+          option(value='IL') Illinois
+          option(value='IN') Indiana
+          option(value='IA') Iowa
+          option(value='KS') Kansas
+          option(value='KY') Kentucky
+          option(value='LA') Louisiana
+          option(value='ME') Maine
+          option(value='MD') Maryland
+          option(value='MA') Massachusetts
+          option(value='MI') Michigan
+          option(value='MN') Minnesota
+          option(value='MS') Mississippi
+          option(value='MO') Missouri
+          option(value='MT') Montana
+          option(value='NE') Nebraska
+          option(value='NV') Nevada
+          option(value='NH') New Hampshire
+          option(value='NJ') New Jersey
+          option(value='NM') New Mexico
+          option(value='NY') New York
+          option(value='NC') North Carolina
+          option(value='ND') North Dakota
+          option(value='OH') Ohio
+          option(value='OK') Oklahoma
+          option(value='OR') Oregon
+          option(value='PA') Pennsylvania
+          option(value='RI') Rhode Island
+          option(value='SC') South Carolina
+          option(value='SD') South Dakota
+          option(value='TN') Tennessee
+          option(value='TX') Texas
+          option(value='UT') Utah
+          option(value='VT') Vermont
+          option(value='VA') Virginia
+          option(value='WA') Washington
+          option(value='WV') West Virginia
+          option(value='WI') Wisconsin
+          option(value='WY') Wyoming
       .form-group.col-md-2
         label(for='inputZip') Zip
         input#inputZip.form-control(type='text')
