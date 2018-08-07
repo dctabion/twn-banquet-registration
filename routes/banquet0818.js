@@ -6,30 +6,33 @@ var Registrant = mongoose.model('Registrant')
 
 /* GET home page. */
 router.get('/register', function(req, res, next) {
-  var registrant = {};
-  registrant.firstName = "Dood";
-  registrant.lastName = "McGee";
-  registrant.address = "123 Sesame St.";
-  registrant.city = "New York";
-  registrant.state = "Indiana";
-  registrant.guests = [
-    { firstname: "Travis", lastName: "McGee"},
-    { firstname: "Mike", lastName: "McGee"}
-  ];
+  // var registrant = {};
+  // registrant.firstName = "Dood";
+  // registrant.lastName = "McGee";
+  // registrant.address = "123 Sesame St.";
+  // registrant.city = "New York";
+  // registrant.state = "Indiana";
+  // registrant.guests = [
+  //   { firstname: "Travis", lastName: "McGee"},
+  //   { firstname: "Mike", lastName: "McGee"}
+  // ];
+  //
+  //
+  // Registrant.create(registrant,
+  //     function(err, registrant) {
+  //       if (err) {
+  //         console.log('error creating registrant! err: ', err);
+  //         res.render('register', { title: 'Banquet Registration with error' });
+  //       }
+  //       else {
+  //         console.log('created new registrant!');
+  //         res.render('register', { title: 'Banquet Registration' });
+  //       }
+  //     }
+  //   );
 
+  res.render('register', { title: 'Banquet Registration' });
 
-  Registrant.create(registrant,
-      function(err, registrant) {
-        if (err) {
-          console.log('error creating registrant! err: ', err);
-          res.render('register', { title: 'Registered with error' });
-        }
-        else {
-          console.log('created new registrant!');
-          res.render('register', { title: 'Registered successfully' });
-        }
-      }
-    );
 });
 
 module.exports = router;

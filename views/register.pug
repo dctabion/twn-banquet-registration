@@ -2,6 +2,42 @@ extends layout
 
 block content
   h1= title
-  p Yo Yo #{title}
+  p We are looking forward to seeing you!
 
-  
+  form
+    .form-row
+      .form-group.col-md-6
+        label(for='registrantFirstName') First Name
+        input#registrantFirstName.form-control(type='textarea' placeholder='First Name')
+      .form-group.col-md-6
+        label(for='registrantLastName') First Name
+        input#registrantLastName.form-control(type='textarea' placeholder='Last Name')
+
+    .form-group
+      label(for='exampleFormControlInput1') Email address
+      input#exampleFormControlInput1.form-control(type='email' placeholder='name@example.com')
+    
+    .form-group
+      label(for='inputAddress') Address
+      input#inputAddress.form-control(type='text' placeholder='1234 Main St')
+    .form-group
+      label(for='inputAddress2') Address 2
+      input#inputAddress2.form-control(type='text' placeholder='Apartment, studio, or floor')
+    .form-row
+      .form-group.col-md-6
+        label(for='inputCity') City
+        input#inputCity.form-control(type='text')
+      .form-group.col-md-4
+        label(for='inputState') State
+        select#inputState.form-control
+          option(selected='') Choose...
+          option ...
+      .form-group.col-md-2
+        label(for='inputZip') Zip
+        input#inputZip.form-control(type='text')
+    .form-group
+      .form-check
+        input#gridCheck.form-check-input(type='checkbox')
+        label.form-check-label(for='gridCheck')
+          | Check me out
+    button.btn.btn-primary(type='submit') Sign in
