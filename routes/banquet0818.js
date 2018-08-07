@@ -22,11 +22,11 @@ router.get('/register', function(req, res, next) {
       function(err, registrant) {
         if (err) {
           console.log('error creating registrant! err: ', err);
-          sendJsonResponse(res, 400, err);
+          res.render('register', { title: 'Registered with error' });
         }
         else {
           console.log('created new registrant!');
-          sendJsonResponse(res, 200, volunteer);
+          res.render('register', { title: 'Registered successfully' });
         }
       }
     );
