@@ -7,7 +7,7 @@ var guestSchema = new mongoose.Schema({
 });
 
 // Parent Schema
-var registrantSchema = new mongoose.Scheme({
+var registrantSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   address: String,
