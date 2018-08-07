@@ -26,7 +26,7 @@ global.myAppVars.TWN_EMAIL_BOT_USERNAME = global.myAppVars.TWN_EMAIL_BOT.substri
 global.myAppVars.TWN_EMAIL_DEVELOPER = process.env.TWN_EMAIL_DEVELOPER;
 
 /* Connect to database */
-require('./app_api/models/db');
+require('./models/db');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
