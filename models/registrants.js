@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 // Sub Schemas
 var guestSchema = new mongoose.Schema({
-  firstName: String;
-  lastName: String;
+  firstName: String,
+  lastName: String
 });
 
 // Parent Schema
