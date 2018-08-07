@@ -6,6 +6,12 @@ var Registrant = mongoose.model('Registrant')
 
 /* GET home page. */
 router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'Banquet Registration' });
+});
+
+router.get('/doRegister', function(req, res, next) {
+  res.render('registerComplete', { title: 'Received Registration Request' });
+
   // var registrant = {};
   // registrant.firstName = "Dood";
   // registrant.lastName = "McGee";
@@ -31,7 +37,7 @@ router.get('/register', function(req, res, next) {
   //     }
   //   );
 
-  res.render('register', { title: 'Banquet Registration' });
+  // res.render('register', { title: 'Banquet Registration' });
 
 });
 

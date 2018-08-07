@@ -6,18 +6,18 @@ block content
     h1#page-title-child= title
   p We are looking forward to seeing you!
 
-  form
+  form(name='registration-form' action='/banquet0818/doRegister' onsubmit='return validateForm()')
     .form-row
       .form-group.col-md-6
         label(for='registrantFirstName') First Name
-        input#registrantFirstName.form-control(type='textarea' placeholder='First Name')
+        input#registrantFirstName.form-control(type='textarea' placeholder='First Name' required)
       .form-group.col-md-6
-        label(for='registrantLastName') First Name
-        input#registrantLastName.form-control(type='textarea' placeholder='Last Name')
+        label(for='registrantLastName') Last Name
+        input#registrantLastName.form-control(type='textarea' placeholder='Last Name' required)
 
     .form-group
       label(for='phoneNumber') Phone number
-      input#phoneNumber.form-control(type='tel' title='Phone Number (Format: (219)933-9000)' placeholder='(xxx)xxx-xxxx')
+      input#phoneNumber.form-control(type='tel' title='Phone Number (Format: (219)933-9000)' placeholder='(xxx)xxx-xxxx' required)
 
     .form-group
       label(for='exampleFormControlInput1') Email address
@@ -96,8 +96,80 @@ block content
       input#affiliation.form-control(type='textarea' placeholder='Affiliation')
 
 
+    #registration-info
+      h3 Guest List
+      p $40/person. Up to 10 people per table/registration.
 
+    .form-row
+      p.col-md-2 Put your name here if you are attending.
+      .form-group.col-md-5
+        input#guestFirstName01.form-control(type='textarea' placeholder='First Name' name='guest-fname-1')
+      .form-group.col-md-5
+        input#guestLastName01.form-control(type='textarea' placeholder='Last Name' name='guest-lname-1')
 
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName02.form-control(type='textarea' placeholder='First Name' name='guest-fname-2')
+      .form-group.col-md-5
+        input#guestLastName02.form-control(type='textarea' placeholder='Last Name' name='guest-lname-2')
 
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName03.form-control(type='textarea' placeholder='First Name' name='guest-fname-3')
+      .form-group.col-md-5
+        input#guestLastName03.form-control(type='textarea' placeholder='Last Name' name='guest-lname-3')
 
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName04.form-control(type='textarea' placeholder='First Name' name='guest-fname-4')
+      .form-group.col-md-5
+        input#guestLastName04.form-control(type='textarea' placeholder='Last Name' name='guest-lname-4')
+
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName05.form-control(type='textarea' placeholder='First Name' name='guest-fname-5')
+      .form-group.col-md-5
+        input#guestLastName05.form-control(type='textarea' placeholder='Last Name' name='guest-lname-5')
+
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName06.form-control(type='textarea' placeholder='First Name' name='guest-fname-6')
+      .form-group.col-md-5
+        input#guestLastName06.form-control(type='textarea' placeholder='Last Name' name='guest-lname-6')
+
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName07.form-control(type='textarea' placeholder='First Name' name='guest-fname-7')
+      .form-group.col-md-5
+        input#guestLastName07.form-control(type='textarea' placeholder='Last Name' name='guest-lname-7')
+
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName08.form-control(type='textarea' placeholder='First Name' name='guest-fname-8')
+      .form-group.col-md-5
+        input#guestLastName08.form-control(type='textarea' placeholder='Last Name' name='guest-lname-8')
+
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName09.form-control(type='textarea' placeholder='First Name' name='guest-fname-9')
+      .form-group.col-md-5
+        input#guestLastName09.form-control(type='textarea' placeholder='Last Name' name='guest-lname-9')
+
+      p.col-md-2 Guest
+      .form-group.col-md-5
+        input#guestFirstName10.form-control(type='textarea' placeholder='First Name' name='guest-fname-10')
+      .form-group.col-md-5
+        input#guestLastName10.form-control(type='textarea' placeholder='Last Name' name='guest-lname-10')
+
+    .form-group
+      input#numGuests(type="hidden" name="numGuests")
+
+    .form-group
     button.btn.btn-primary(type='submit') Continue
+    
+    
+    include includes/scripts.pug
+    
+    script(src='/javascripts/copy-field.js')
+    script(src='/javascripts/validate-form.js')
+    script(src='/javascripts/main-reg-form.js')

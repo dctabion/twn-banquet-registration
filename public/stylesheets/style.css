@@ -16,4 +16,15 @@ a {
 label {
   font-weight: bold; }
 
+#registration-info {
+  margin-top: 55px;
+  margin-bottom: 20px; }
+
+#registration-info p {
+  margin-top: 0px;
+  font-style: italic; }
+
+#registration-info h3 {
+  margin-bottom: 0px; }
+
 /*# sourceMappingURL=style.css.map */
