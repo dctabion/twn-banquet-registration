@@ -14,7 +14,7 @@ var registrantSchema = new mongoose.Scheme({
   city: String,
   state: String,
   zip: String,
-  guests: [ guestSchema ];
+  guests: [ guestSchema ]
 });
 
 mongoose.model("Registrant", registrantSchema);
