@@ -5,8 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 
+// --------- INTIALIZE SOME GLOBALS ------------- //
+global.myAppVars = {};
 
-/* Set globals */
 if (process.env.NODE_ENV === 'production') {
   global.myAppVars.server = process.env.APP_URL;
 }
