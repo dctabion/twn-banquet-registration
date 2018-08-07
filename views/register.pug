@@ -1,7 +1,9 @@
 extends layout
 
 block content
-  h1= title
+  img#twn-logo(src='/images/TWN_logo.png' alt='The Welcome Net Logo')
+  div#page-title-parent.clearfix
+    h1#page-title-child= title
   p We are looking forward to seeing you!
 
   form
@@ -90,8 +92,12 @@ block content
         label(for='inputZip') Zip
         input#inputZip.form-control(type='text')
     .form-group
-      .form-check
-        input#gridCheck.form-check-input(type='checkbox')
-        label.form-check-label(for='gridCheck')
-          | Check me out
-    button.btn.btn-primary(type='submit') Sign in
+      label(for='Affiliation') Are you a guest of a Welcome Network Board member, or affiliated Church partner? If so, please indicate which/who?
+      input#affiliation.form-control(type='textarea' placeholder='Affiliation')
+
+
+
+
+
+
+    button.btn.btn-primary(type='submit') Continue

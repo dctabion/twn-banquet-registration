@@ -5,4 +5,15 @@ body {
 a {
   color: #00B7FF; }
 
+#twn-logo {
+  max-height: 100px; }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table; }
+
+label {
+  font-weight: bold; }
+
 /*# sourceMappingURL=style.css.map */
