@@ -1,11 +1,15 @@
 extends layout
 
 block content
-  img#twn-logo(src='/images/TWN_logo.png' alt='The Welcome Net Logo')
-  div#page-title-parent.clearfix
-    h1#page-title-child= title
-  p We are looking forward to seeing you!  $40/ticket. 10AM. Saturday, 10/20/18.
-
+  .row#registration-banner
+    img#twn-logo.col-md-3(src='/images/TWN_logo.png' alt='The Welcome Net Logo')
+    div#page-title-parent.col-md-5
+      h1#page-title-child= title
+      p We are looking forward to seeing you!<br>$40/ticket. 10AM. Saturday, 10/20/18.
+    div.col-md-3
+      a(href="/images/LostBoyFound.pdf" download)
+        img#flyer(src='/images/ThumbNailLostBoyFound.jpg' alt='Lost Boy Found Flyer')
+        p Event Flyer
   form(name='registration-form' action='/banquet102018/doRegister' onsubmit='return validateForm()')
     .form-row
       .form-group.col-md-6
