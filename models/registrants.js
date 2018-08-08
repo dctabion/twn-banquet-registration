@@ -10,10 +10,14 @@ var guestSchema = new mongoose.Schema({
 var registrantSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  address: String,
+  phoneNumber: String,
+  emailAddress: String,
+  address1: String,
+  address2: String,
   city: String,
   state: String,
-  zip: String,
+  zipCode: String,
+  affiliation: String,
   guests: [ guestSchema ]
 });
 

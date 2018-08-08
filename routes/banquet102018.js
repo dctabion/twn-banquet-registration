@@ -46,8 +46,6 @@ router.post('/doRegister', function(req, res, next) {
 
   // TODO: check for injections and security breach
 
-
-  // TODO: store registration body in DB
   res.render('confirmOrder', {
     title: 'Confirm Order',
     registrantFirstName: req.body.registrantFirstName,
@@ -61,7 +59,8 @@ router.post('/doRegister', function(req, res, next) {
     zipCode: req.body.zipCode,
     affiliation: req.body.affiliation,
     numGuests: req.body.numGuests,
-    guests: guests
+    guests: guests,
+    paymentType: req.body.paymentType
   });
 });
 
@@ -99,39 +98,39 @@ router.post('/orderConfirmedHiddenPage', function(req, res, next) {
     }
   }
   console.log('guests', guests);
-  
+
   /************* SAVE TO DATABASE **********/
-  // var registrant = {};
-  // registrant.firstName = "Dood";
-  // registrant.lastName = "McGee";
-  // registrant.address = "123 Sesame St.";
-  // registrant.city = "New York";
-  // registrant.state = "Indiana";
-  // registrant.guests = [
-  //   { firstname: "Travis", lastName: "McGee"},
-  //   { firstname: "Mike", lastName: "McGee"}
-  // ];
-  //
-  //
-  // Registrant.create(registrant,
-  //     function(err, registrant) {
-  //       if (err) {
-  //         console.log('error creating registrant! err: ', err);
-  //         res.render('register', { title: 'Banquet Registration with error' });
-  //       }
-  //       else {
-  //         console.log('created new registrant!');
-  //         res.render('register', { title: 'Banquet Registration' });
-  //       }
-  //     }
-  //   );
+  var registrant = {};
+  registrant.firstName = req.body.registrantFirstName;
+  registrant.lastName = req.body.registrantLastName;
+  registrant.phoneNumber = req.body.phoneNumber;
+  registrant.emailAddress = req.body.emailAddress;
+  registrant.address1 = req.body.address1;
+  registrant.address2 = req.body.address2;
+  registrant.city = req.body.city;
+  registrant.state = req.body.state;
+  registrant.zipCode = req.body.zipCode;
+  registrant.affiliation = req.body.affiliation;
+  registrant.guests = guests;
 
-  // res.render('register', { title: 'Banquet Registration' });
-
-  res.render('orderConfirmedHiddenPage', {
-    title: 'Order Confirmed Hidden Page',
-    numGuests: guests.length
-  });
+  Registrant.create(registrant,
+      function(err, registrant) {
+        if (err) {
+          console.log('error creating registrant! err: ', err);
+          res.render('Error', {
+            title: 'Banquet Registration Error. ',
+            message: 'We had a problem processing your order.  Please try again. Sorry for the inconvenience.'
+          });
+        }
+        else {
+          console.log('created new registrant in DB!');
+          res.render('orderConfirmedHiddenPage', {
+            title: 'Order Confirmed Hidden Page',
+            numGuests: guests.length
+          });
+        }
+      }
+    );
 });
 
 
