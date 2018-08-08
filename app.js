@@ -25,6 +25,7 @@ global.myAppVars.TWN_EMAIL_BOT = process.env.TWN_EMAIL_BOT;
 global.myAppVars.TWN_EMAIL_BOT_USERNAME = global.myAppVars.TWN_EMAIL_BOT.substring(0, global.myAppVars.TWN_EMAIL_BOT.lastIndexOf("@"));
 global.myAppVars.TWN_EMAIL_DEVELOPER = process.env.TWN_EMAIL_DEVELOPER;
 
+console.log('global: ', global);
 /* Connect to database */
 require('./models/db');
 
