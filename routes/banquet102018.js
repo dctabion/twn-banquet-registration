@@ -99,6 +99,7 @@ router.post('/orderConfirmedHiddenPage', function(req, res, next) {
     }
   }
   console.log('guests', guests);
+  
   /************* SAVE TO DATABASE **********/
   // var registrant = {};
   // registrant.firstName = "Dood";
@@ -127,11 +128,9 @@ router.post('/orderConfirmedHiddenPage', function(req, res, next) {
 
   // res.render('register', { title: 'Banquet Registration' });
 
-
-
   res.render('orderConfirmedHiddenPage', {
     title: 'Order Confirmed Hidden Page',
-    numGuests: guests.length + 1
+    numGuests: guests.length
   });
 });
 

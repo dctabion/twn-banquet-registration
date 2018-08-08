@@ -4,27 +4,27 @@ block content
   h1= title
 
   .row
-    h4.col-md-1 Name
-    p.col-md-11= registrantFirstName + ' ' + registrantLastName
+    h4.col-md-2 Name
+    p.col-md-10= registrantFirstName + ' ' + registrantLastName
   .row
-    h4.col-md-1 Phone
-    p.col-md-11= phoneNumber
+    h4.col-md-2 Phone
+    p.col-md-10= phoneNumber
   .row
-    h4.col-md-1 Email
-    p.col-md-11= emailAddress
+    h4.col-md-2 Email
+    p.col-md-10= emailAddress
   .row
-    h4.col-md-1 Address
-    p.col.md-11= address1
+    h4.col-md-2 Address
+    p.col.md-10= address1
   .row
     -if (address2!= undefined)
-      h4.col-md-1
-      p.col.md-11= address2
+      h4.col-md-2
+      p.col.md-10= address2
   .row
-    h4.col-md-1
-    p.col-md-11= city + ', ' + state + ' ' + zipCode
+    h4.col-md-2
+    p.col-md-10= city + ', ' + state + ' ' + zipCode
   .row
-    h4.col-md-1 Affliation
-    p.col-md-11= affiliation
+    h4.col-md-2 Affliation
+    p.col-md-10= affiliation
   each guest, i in guests
     p.col-md-12= 'Seat ' + (i + 1) + ': ' + guest.firstName + ' ' + guest.lastName
 
