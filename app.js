@@ -30,7 +30,7 @@ require('./models/db');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var banquet0818Router = require('./routes/banquet0818');
+var banquet102018Router = require('./routes/banquet102018');
 
 var app = express();
 
@@ -52,7 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/banquet0818', banquet0818Router);
+app.use('/banquet102018', banquet102018Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
