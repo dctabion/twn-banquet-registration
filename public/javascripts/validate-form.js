@@ -8,14 +8,13 @@ function validateForm() {
   for (i = 1; i < 11; i++) {
     console.log(`------------i: ${i}`);
     // Check if for missing last name (first name filled out but last name missing)
-    fnameExpression = `document.forms[\"registration-form\"][\"guest-fname-${i}\"].value`
-    lnameExpression = `document.forms[\"registration-form\"][\"guest-lname-${i}\"].value`
+    fnameExpression = `document.forms[\"registration-form\"][\"guest_fname_${i}\"].value`
+    lnameExpression = `document.forms[\"registration-form\"][\"guest_lname_${i}\"].value`
     console.log("fnameExpression", fnameExpression);
     console.log("lnameExpression", lnameExpression);
     console.log(`fnameExpression: ${fnameExpression}, lnameExpression: ${lnameExpression}`);
     fname = eval(fnameExpression);
     lname = eval(lnameExpression);
-
 
     if ( (fname.length > 0) && (lname == "") ) {
         alert("Someone's last name is missing in your guest list");
@@ -39,17 +38,7 @@ function validateForm() {
   }
 
   // update numGuests input
-  console.log("numGuests", numGuests);
-  var numGuestsEl = document.querySelector('#numGuests');
-  numGuestsEl.value = numGuests;
-
-
-
-
-
-
-
-
-
-
+  // console.log("numGuests", numGuests);
+  // var numGuestsEl = document.querySelector('#numGuests');
+  // numGuestsEl.value = numGuests;
 }

@@ -3,43 +3,44 @@ extends layout
 block content
   .row#registration-banner
     img#twn-logo.col-md-3(src='/images/TWN_logo.png' alt='The Welcome Net Logo')
-    div#page-title-parent.col-md-5
+    div#page-title-parent.col-md-6
       h1#page-title-child= title
       p We are looking forward to seeing you!<br>$40/ticket. 10AM. Saturday, 10/20/18.
     div.col-md-3
       a(href="/images/LostBoyFound.pdf" download)
         img#flyer(src='/images/ThumbNailLostBoyFound.jpg' alt='Lost Boy Found Flyer')
         p Event Flyer
-  form(name='registration-form' action='/banquet102018/doRegister' onsubmit='return validateForm()')
+        
+  form(name='registration-form' action='/banquet102018/doRegister' onsubmit='return validateForm()' method='post')
     .form-row
       .form-group.col-md-6
         label(for='registrantFirstName') First Name
-        input#registrantFirstName.form-control(type='textarea' placeholder='First Name' required)
+        input#registrantFirstName.form-control(type='textarea' placeholder='First Name' name='registrantFirstName' required)
       .form-group.col-md-6
         label(for='registrantLastName') Last Name
-        input#registrantLastName.form-control(type='textarea' placeholder='Last Name' required)
+        input#registrantLastName.form-control(type='textarea' placeholder='Last Name' name='registrantLastName' required)
 
     .form-group
       label(for='phoneNumber') Phone number
-      input#phoneNumber.form-control(type='tel' title='Phone Number (Format: (219)933-9000)' placeholder='(xxx)xxx-xxxx' required)
+      input#phoneNumber.form-control(type='tel' title='Phone Number (Format: (219)933-9000)' placeholder='(xxx)xxx-xxxx' name='phoneNumber' required)
 
     .form-group
-      label(for='exampleFormControlInput1') Email address
-      input#exampleFormControlInput1.form-control(type='email' placeholder='name@example.com')
+      label(for='emailAddress') Email address
+      input#emailAddress.form-control(type='email' name='emailAddress' placeholder='name@example.com')
 
     .form-group
-      label(for='inputAddress') Address
-      input#inputAddress.form-control(type='text' placeholder='1234 Main St')
+      label(for='address1') Address
+      input#inputAddress.form-control(type='text' placeholder='1234 Main St' name='address1')
     .form-group
-      label(for='inputAddress2') Address 2
-      input#inputAddress2.form-control(type='text' placeholder='Apartment, studio, or floor')
+      label(for='address2') Address 2
+      input#inputAddress2.form-control(type='text' placeholder='Apartment, studio, or floor' name='address2')
     .form-row
       .form-group.col-md-6
-        label(for='inputCity') City
-        input#inputCity.form-control(type='text')
+        label(for='city') City
+        input#inputCity.form-control(type='text' name='city')
       .form-group.col-md-4
-        label(for='inputState') State
-        select#inputState.form-control
+        label(for='state') State
+        select#inputState.form-control(name='state')
           option(selected='') Choose...
           option(value='AL') Alabama
           option(value='AK') Alaska
@@ -93,11 +94,11 @@ block content
           option(value='WI') Wisconsin
           option(value='WY') Wyoming
       .form-group.col-md-2
-        label(for='inputZip') Zip
-        input#inputZip.form-control(type='text')
+        label(for='zipCode') Zip
+        input#inputZip.form-control(type='text' name='zipCode')
     .form-group
-      label(for='Affiliation') Are you a guest of a Welcome Network Board member, or affiliated Church partner? If so, please indicate which/who?
-      input#affiliation.form-control(type='textarea' placeholder='Affiliation')
+      label(for='affiliation') Are you a guest of a Welcome Network Board member, or affiliated Church partner? If so, please indicate which/who?
+      input#affiliation.form-control(type='textarea' placeholder='Affiliation' name='affiliation')
 
 
     #registration-info
@@ -107,63 +108,63 @@ block content
     .form-row
       p.col-md-2 Put your name here if you are attending.
       .form-group.col-md-5
-        input#guestFirstName01.form-control(type='textarea' placeholder='First Name' name='guest-fname-1')
+        input#guestFirstName1.form-control(type='textarea' placeholder='First Name' name='guest_fname_1')
       .form-group.col-md-5
-        input#guestLastName01.form-control(type='textarea' placeholder='Last Name' name='guest-lname-1')
+        input#guestLastName1.form-control(type='textarea' placeholder='Last Name' name='guest_lname_1')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName02.form-control(type='textarea' placeholder='First Name' name='guest-fname-2')
+        input#guestFirstName2.form-control(type='textarea' placeholder='First Name' name='guest_fname_2')
       .form-group.col-md-5
-        input#guestLastName02.form-control(type='textarea' placeholder='Last Name' name='guest-lname-2')
+        input#guestLastName2.form-control(type='textarea' placeholder='Last Name' name='guest_lname_2')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName03.form-control(type='textarea' placeholder='First Name' name='guest-fname-3')
+        input#guestFirstName3.form-control(type='textarea' placeholder='First Name' name='guest_fname_3')
       .form-group.col-md-5
-        input#guestLastName03.form-control(type='textarea' placeholder='Last Name' name='guest-lname-3')
+        input#guestLastName3.form-control(type='textarea' placeholder='Last Name' name='guest_lname_3')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName04.form-control(type='textarea' placeholder='First Name' name='guest-fname-4')
+        input#guestFirstName4.form-control(type='textarea' placeholder='First Name' name='guest_fname_4')
       .form-group.col-md-5
-        input#guestLastName04.form-control(type='textarea' placeholder='Last Name' name='guest-lname-4')
+        input#guestLastName4.form-control(type='textarea' placeholder='Last Name' name='guest_lname_4')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName05.form-control(type='textarea' placeholder='First Name' name='guest-fname-5')
+        input#guestFirstName5.form-control(type='textarea' placeholder='First Name' name='guest_fname_5')
       .form-group.col-md-5
-        input#guestLastName05.form-control(type='textarea' placeholder='Last Name' name='guest-lname-5')
+        input#guestLastName5.form-control(type='textarea' placeholder='Last Name' name='guest_lname_5')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName06.form-control(type='textarea' placeholder='First Name' name='guest-fname-6')
+        input#guestFirstName6.form-control(type='textarea' placeholder='First Name' name='guest_fname_6')
       .form-group.col-md-5
-        input#guestLastName06.form-control(type='textarea' placeholder='Last Name' name='guest-lname-6')
+        input#guestLastName6.form-control(type='textarea' placeholder='Last Name' name='guest_lname_6')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName07.form-control(type='textarea' placeholder='First Name' name='guest-fname-7')
+        input#guestFirstName7.form-control(type='textarea' placeholder='First Name' name='guest_fname_7')
       .form-group.col-md-5
-        input#guestLastName07.form-control(type='textarea' placeholder='Last Name' name='guest-lname-7')
+        input#guestLastName7.form-control(type='textarea' placeholder='Last Name' name='guest_lname_7')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName08.form-control(type='textarea' placeholder='First Name' name='guest-fname-8')
+        input#guestFirstName8.form-control(type='textarea' placeholder='First Name' name='guest_fname_8')
       .form-group.col-md-5
-        input#guestLastName08.form-control(type='textarea' placeholder='Last Name' name='guest-lname-8')
+        input#guestLastName8.form-control(type='textarea' placeholder='Last Name' name='guest_lname_8')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName09.form-control(type='textarea' placeholder='First Name' name='guest-fname-9')
+        input#guestFirstName9.form-control(type='textarea' placeholder='First Name' name='guest_fname_9')
       .form-group.col-md-5
-        input#guestLastName09.form-control(type='textarea' placeholder='Last Name' name='guest-lname-9')
+        input#guestLastName9.form-control(type='textarea' placeholder='Last Name' name='guest_lname_9')
 
       p.col-md-2 Guest
       .form-group.col-md-5
-        input#guestFirstName10.form-control(type='textarea' placeholder='First Name' name='guest-fname-10')
+        input#guestFirstName10.form-control(type='textarea' placeholder='First Name' name='guest_fname_10')
       .form-group.col-md-5
-        input#guestLastName10.form-control(type='textarea' placeholder='Last Name' name='guest-lname-10')
+        input#guestLastName10.form-control(type='textarea' placeholder='Last Name' name='guest_lname_10')
 
     .form-group
       input#numGuests(type="hidden" name="numGuests")

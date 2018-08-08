@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1= title
+
+  .row
+    h4.col-md-1 Name
+    p.col-md-11= registrantFirstName + ' ' + registrantLastName
+  .row
+    h4.col-md-1 Phone
+    p.col-md-11= phoneNumber
+  .row
+    h4.col-md-1 Email
+    p.col-md-11= emailAddress
+  .row
+    h4.col-md-1 Address
+    p.col.md-11= address1
+  .row
+    -if (address2!= undefined)
+      h4.col-md-1
+      p.col.md-11= address2
+  .row
+    h4.col-md-1
+    p.col-md-11= city + ', ' + state + ' ' + zipCode
+  .row
+    h4.col-md-1 Affliation
+    p.col-md-11= affiliation
+  each guest, i in guests
+    p.col-md-12= 'Seat ' + (i + 1) + ': ' + guest.firstName + ' ' + guest.lastName
+
+  a(href="javascript:history.back()") Go Back
+
+
+
+
+  form(name='registration-form' action='/banquet102018/orderConfirmedHiddenPage' method='post')
+    input.hidden-input(type='textarea' name='registrantFirstName' value=registrantFirstName)
+    input.hidden-input(type='textarea' name='registrantLastName' value=registrantLastName)
+    input.hidden-input(type='tel' name='phoneNumber' value=phoneNumber )
+    input.hidden-input(type='email' name='emailAddress' value=emailAddress)
+    input.hidden-input(type='text' name='address1' value=address1)
+    input.hidden-input(type='text' name='address2' value=address2)
+    input.hidden-input(type='text' name='city' value=city)
+    select.hidden-input(name='state' value=state)
+    input.hidden-input(type='text' name='zipCode' value=zipCode)
+    input.hidden-input(type='textarea' name='affiliation' value=affiliation)
+        
+    each guest, i in guests 
+      input.hidden-input(type='textarea' name='guest_fname_' + (i+1) value=guest.firstName)  
+      input.hidden-input(type='textarea' name='guest_lname_' + (i+1) value=guest.lastName)  
+
+    input.hidden-input(type="hidden" name="numGuests")
+    button.confirmOrderButton.btn.btn-primary(type='submit') Continue  
+  

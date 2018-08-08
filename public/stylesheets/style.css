@@ -33,4 +33,13 @@ label {
 #flyer {
   height: 100px; }
 
+#go-back {
+  height: 60px; }
+
+.hidden-input {
+  display: none; }
+
+#confirmOrderButton {
+  display: block; }
+
 /*# sourceMappingURL=style.css.map */

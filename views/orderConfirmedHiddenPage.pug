@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  
+  form(target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post')
+    input#numGuests(type='hidden' value=numGuests)
+    input(type='hidden' name='cmd' value='_s-xclick')
+    input(type='hidden' name='hosted_button_id' value='FTKDCANSAYGZL')
+    table#paypalOptions
+      tr
+        td
+          input(type='hidden' name='on0' value='# of Tickets')
+          | # of Tickets
+      tr
+        td
+          select(name='os0')
+            - for (var x = 1; x < 11; x++)
+              option(value=x +' Seats')=x+' Seats $' + (40 * x) + ' USD'
+    input(type='hidden' name='currency_code' value='USD')
+    input#paypalAddToCartButton(type='image' src='https://www.paypalobjects.com/en_US/i/btn/btn_cart_SM.gif' border='0' name='submit' alt='PayPal - The safer, easier way to pay online!' height='30')
+    img(alt='' border='0' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif' width='1' height='1')
