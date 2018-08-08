@@ -1,9 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  
-  form(target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post')
+  img#hidden-page-logo(src='/images/TWN_logo.png' alt='The Welcome Net')
+  h1 Thank you for registering!  Please check your email.
+  form.hidden-input(target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post')
     input#numGuests(type='hidden' value=numGuests)
     input(type='hidden' name='cmd' value='_s-xclick')
     input(type='hidden' name='hosted_button_id' value='FTKDCANSAYGZL')

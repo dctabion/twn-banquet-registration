@@ -13,5 +13,5 @@ function proceedToCheckout() {
   // Autopress the Paypal Add to Cart button to go to Paypal checkout page
   var daButton = document.getElementById('paypalAddToCartButton');
   console.log('daButton', daButton);
-  // daButton.click();
+  daButton.click();
 }

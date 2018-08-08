@@ -16,7 +16,7 @@ $( document ).ready(function() {
   }
 
 
-  if (document.title == "Order Confirmed Hidden Page") {
+  if (document.title == "Order Confirmed") {
     console.log('activating Order Confirmed Hidden Page script for autoselect and auto click');
     proceedToCheckout();
   }

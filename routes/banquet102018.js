@@ -64,8 +64,8 @@ router.post('/doRegister', function(req, res, next) {
   });
 });
 
-router.post('/orderConfirmedHiddenPage', function(req, res, next) {
-  console.log('--------orderConfirmedHiddenPage controller');
+router.post('/orderConfirmed', function(req, res, next) {
+  console.log('--------orderConfirmed controller');
   console.log(`req.body.registrantFirstName ${req.body.registrantFirstName}`);
   console.log(`req.body.registrantLastName ${req.body.registrantLastName}`);
   console.log(`req.body.phoneNumber ${req.body.phoneNumber}`);
@@ -124,8 +124,8 @@ router.post('/orderConfirmedHiddenPage', function(req, res, next) {
         }
         else {
           console.log('created new registrant in DB!');
-          res.render('orderConfirmedHiddenPage', {
-            title: 'Order Confirmed Hidden Page',
+          res.render('orderConfirmed', {
+            title: 'Order Confirmed',
             numGuests: guests.length
           });
         }
