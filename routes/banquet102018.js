@@ -190,20 +190,31 @@ router.post('/orderConfirmed', function(req, res, next) {
           console.log('new registrant email: ', registrant.emailAddress)
 
           var html1 = '<p>Hello, ' + registrant.firstName + " " + registrant.lastName + "!</p>"
-          if (registrant.paymentMethod == 'online') {
-            html1 = html1 + '<p>Thank you for registering for the banquet. Please mark your calender.</p>';
-          }
-          else if (registrant.paymentMethod == "check") {
-            html1 = html1 + '<p>Thank you for registering for the banquet. ';
-            html1 = html1 + 'Please make your check out to Chicagoland Immigrant Welcome Network (or feel free to use the abbreviation "CIWN") and mail the donation to:</p>';
-            html1 = html1 + '<p>Welcome Network Donations<br>P.O. Box 3393<br>Munster, IN 46321</p>';
-          }
-          html1 = html1 + '<p>10AM. Saturday, 10/20/18<br>We look forward to seeing you there!</p>';
+          html1 = html1 + '<h3>THANK YOU!</h3>';
+          html1 = html1 + '<p>We are excited to present speaker, Sudanese "Lost Boy" and Episcopalian Minister, Reverand Zachariah Char. We are looking forward to seeing you at the banquet and appreciate your support of the Welcome Network!</p><br>';
 
-          html1 = html1 + '<p>Gamba Ristorante<br>455 E. 84th Ave.<br>Merillville, IN 46410<br></p>';
+          if (registrant.paymentMethod == "check") {
+            html1 = html1 + '<h3>PAYMENT</h3>';
+            html1 = html1 + '<p>Please make checks payable to:<i><br>Chicagoland Immigrant Welcome Network</i><br>(or feel free to use the abbreviation <i>\"CIWN\" instead</i>)<br><br>';
+            html1 = html1 + 'and mail it to:<br>';
+            html1 = html1 + '<i>Welcome Network Donations<br>';
+            html1 = html1 + '<i>P.O. Box 3393<br>';
+            html1 = html1 + '<i>Munster, IN 46321</p><br>';
 
-          html1 = html1 + '<a href=\'https://twn-app.herokuapp.com/images/LostBoyFound.pdf\'>Click for event flyer<br><br></a>'
-          html1 = html1 + '<strong>CHICAGOLAND IMMIGRANT WELCOME NETOWORK</strong><br>824 Hoffman St. | Hammond, IN 46327<br>219.932.4800 (ext. 106)</p><p><a href="https://twitter.com/TheWelcomeNet">Follow</a> the Welcome Network on Twitter<br><a href="https://www.facebook.com/TheWelcomeNetwork">Like</a> the Welcome Network on Facebook</p><p><a href="http://www.thewelcomenet.org/">thewelcomenet.org</a></p>';
+          }
+
+          html1 = html1 + '<h3>EVENT</h3>';
+          html1 = html1 + '<p>10AM. Saturday, 10/20/18<br>';
+          html1 = html1 + 'Gamba Ristorante<br>455 E. 84th Ave.<br>Merillville, IN 46410</p><br>';
+          html1 = html1 + '<a class="flyer-anchor" href=\'https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\'><img class=\"flyer-image\" src=\"https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\" width=\"77px\" height=\"100px\" alt=\"Event Flyer\"></img></a>';
+          html1 = html1 + '<p>Click for event flyer</p><br>';
+          html1 = html1 + '<h3>CHICAGOLAND IMMIGRANT WELCOME NETWORK</h3>';
+          html1 = html1 + '<p>824 Hoffman St. | Hammond, IN 46327219.932.4800 (ext. 106)</p>';
+          html1 = html1 + '<a href=\"http://www.thewelcomenet.org/\"><img class=\"icon\" src=\"https://twn-app.herokuapp.com/images/TWN_logo.png\" height=\"65px\" width=\"140px\"></a>';
+          html1 = html1 + '<a href=\"https://twitter.com/TheWelcomeNet\"><img class=\"icon\" src=\"https://twn-app.herokuapp.com/images/iconTwitter.png\" height=\"50px\" alt=\"Twitter\"></a>';
+
+          html1 = html1 + '<a href=\"https://www.facebook.com/TheWelcomeNetwork\"><img class=\"icon\" src=\"https://twn-app.herokuapp.com/images/iconFacebook.png\" height=\"50px\" alt=\"FB\"></a>';
+          html1 = html1 + '<style>h3 { margin-bottom: 0px } p { margin-top: 0px; margin-bottom: 0px;} .flyer-image { height: 100px; } .flyer-anchor { display: block; } i, a.anchor-block { display: block; } img.icon { height: 50px; } </style>';
 
           var mailOptions = {
             from: "Daniel Tabion<" + global.myAppVars.TWN_EMAIL_BOT + ">",
