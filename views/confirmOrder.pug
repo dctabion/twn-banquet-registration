@@ -25,8 +25,14 @@ block content
   .row
     h4.col-md-2 Affiliation
     p.col-md-10= affiliation
-  each guest, i in guests
-    p.col-md-12= 'Seat ' + (i + 1) + ': ' + guest.firstName + ' ' + guest.lastName
+  .row
+    h4.col-md-2 Guest List
+    .col-md-10
+      each guest, i in guests
+        p.col-md-10= 'Seat ' + (i + 1) + ': ' + guest.firstName + ' ' + guest.lastName
+  .row
+    h4.col-md-2 Payment method
+    p.col-md-10= paymentMethod
 
   a(href="javascript:history.back()") Go Back
 
@@ -44,6 +50,8 @@ block content
     select.hidden-input(name='state' value=state)
     input.hidden-input(type='text' name='zipCode' value=zipCode)
     input.hidden-input(type='textarea' name='affiliation' value=affiliation)
+    input.hidden-input(type='textarea' name='paymentMethod' value=paymentMethod)
+  
         
     each guest, i in guests 
       input.hidden-input(type='textarea' name='guest_fname_' + (i+1) value=guest.firstName)  

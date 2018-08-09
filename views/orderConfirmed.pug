@@ -2,8 +2,12 @@ extends layout
 
 block content
   img#hidden-page-logo(src='/images/TWN_logo.png' alt='The Welcome Net')
-  h1 Thank you for registering!  We've sent you an email confirmation.
+  h3.col-md-4 Thank you for registering!  We've sent you an email confirmation.
+  .col-md-8
+  -if (paymentMethod == 'check')
+    p.col-md-4 Please make your check out to Chicagoland Immigrant Welcome Network (or feel free to use the abbreviation "CIWN") and mail the donation to:<br><br>Welcome Network Donations<br>P.O. Box 3393<br>Munster, IN 46321
   form.hidden-input(target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post')
+    input#paymentMethod(type='hidden' name='paymentMethod' value=paymentMethod)
     input#numGuests(type='hidden' value=numGuests)
     input(type='hidden' name='cmd' value='_s-xclick')
     input(type='hidden' name='hosted_button_id' value='FTKDCANSAYGZL')

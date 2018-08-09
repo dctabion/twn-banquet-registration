@@ -35,6 +35,7 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/doRegister', function(req, res, next) {
+  console.log('------doRegister()');
   console.log(`req.body.registrantFirstName ${req.body.registrantFirstName}`);
   console.log(`req.body.registrantLastName ${req.body.registrantLastName}`);
   console.log(`req.body.phoneNumber ${req.body.phoneNumber}`);
@@ -45,6 +46,7 @@ router.post('/doRegister', function(req, res, next) {
   console.log(`req.body.state ${req.body.state}`);
   console.log(`req.body.zipCode ${req.body.zipCode}`);
   console.log(`req.body.affiliation ${req.body.affiliation}`);
+  console.log(`req.body.paymentMethod ${req.body.Method}`);
 
   /******* Validate & Normalize registration body ********/
   // move guest entries to array
@@ -69,8 +71,6 @@ router.post('/doRegister', function(req, res, next) {
   }
   console.log('guests', guests);
 
-  // TODO: check for injections and security breach
-
   res.render('confirmOrder', {
     title: 'Confirm Order',
     registrantFirstName: req.body.registrantFirstName,
@@ -83,9 +83,9 @@ router.post('/doRegister', function(req, res, next) {
     state: req.body.state,
     zipCode: req.body.zipCode,
     affiliation: req.body.affiliation,
+    paymentMethod: req.body.paymentMethod,
     numGuests: req.body.numGuests,
-    guests: guests,
-    paymentType: req.body.paymentType
+    guests: guests
   });
 });
 
@@ -111,8 +111,9 @@ router.post('/orderConfirmed', function(req, res, next) {
   console.log(`req.body.state ${req.body.state}`);
   console.log(`req.body.zipCode ${req.body.zipCode}`);
   console.log(`req.body.affiliation ${req.body.affiliation}`);
+  console.log(`req.body.paymentMethod ${req.body.paymentMethod}`);
 
-  /******* TODO: validate & normalize registration body ********/
+  /******* Validate & Normalize registration body ********/
   // move guest entries to array
   var guests = [];
   var i;
@@ -146,6 +147,8 @@ router.post('/orderConfirmed', function(req, res, next) {
   registrant.state = req.body.state;
   registrant.zipCode = req.body.zipCode;
   registrant.affiliation = req.body.affiliation;
+  registrant.paymentMethod = req.body.paymentMethod;
+  // registrant.paymentMethod = 'check';
   registrant.guests = guests;
 
   Registrant.create(registrant,
@@ -161,13 +164,7 @@ router.post('/orderConfirmed', function(req, res, next) {
         // Successfully added record to DB
         else {
           console.log('created new registrant in DB!');
-          /* Send confirmation email */
-
-
-
-
-
-
+          /* Send confirmation emails */
 
           // Send message to administrator and developer
           console.log('Send message to admin and developer');
@@ -193,7 +190,14 @@ router.post('/orderConfirmed', function(req, res, next) {
           console.log('new registrant email: ', registrant.emailAddress)
 
           var html1 = '<p>Hello, ' + registrant.firstName + " " + registrant.lastName + "!</p>"
-          html1 = html1 + '<p>Thank you for registering for the banquet. Please mark your calender.</p>';
+          if (registrant.paymentMethod == 'online') {
+            html1 = html1 + '<p>Thank you for registering for the banquet. Please mark your calender.</p>';
+          }
+          else if (registrant.paymentMethod == "check") {
+            html1 = html1 + '<p>Thank you for registering for the banquet. ';
+            html1 = html1 + 'Please make your check out to Chicagoland Immigrant Welcome Network (or feel free to use the abbreviation "CIWN") and mail the donation to:</p>';
+            html1 = html1 + '<p>Welcome Network Donations<br>P.O. Box 3393<br>Munster, IN 46321</p>';
+          }
           html1 = html1 + '<p>10AM. Saturday, 10/20/18<br>We look forward to seeing you there!</p>';
 
           html1 = html1 + '<p>Gamba Ristorante<br>455 E. 84th Ave.<br>Merillville, IN 46410<br></p>';
@@ -218,24 +222,11 @@ router.post('/orderConfirmed', function(req, res, next) {
             console.log('Email sent: ' + info.response);
           });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           /* Move on to hidden confirmation page which redirects to PayPal's page */
           res.render('orderConfirmed', {
             title: 'Order Confirmed',
-            numGuests: guests.length
+            numGuests: guests.length,
+            paymentMethod: registrant.paymentMethod
           });
         }
       }

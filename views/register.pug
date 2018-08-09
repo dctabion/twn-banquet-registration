@@ -168,6 +168,16 @@ block content
 
     .form-group
       input#numGuests(type="hidden" name="numGuests")
+  
+    h5 Payment Method      
+    .form-check
+      input#payOnline.form-check-input(type='radio' name='paymentMethod' value='online' checked='')
+      label.form-check-label(for='payOnline')
+        | Pay online (credit card or PayPal)
+    .form-check
+      input#payByCheck.form-check-input(type='radio' name='paymentMethod' value='check')
+      label.form-check-label(for='payByCheck')
+        | Mail a check
 
     .form-group
     button.btn.btn-primary(type='submit') Continue

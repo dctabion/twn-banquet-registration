@@ -18,6 +18,7 @@ var registrantSchema = new mongoose.Schema({
   state: String,
   zipCode: String,
   affiliation: String,
+  paymentMethod: String,
   guests: [ guestSchema ]
 });
 
