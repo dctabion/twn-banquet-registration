@@ -194,12 +194,12 @@ router.post('/orderConfirmed', function(req, res, next) {
 
           var html1 = '<p>Hello, ' + registrant.firstName + " " + registrant.lastName + "!</p>"
           html1 = html1 + '<p>Thank you for registering for the banquet. Please mark your calender.</p>';
-          html1 = html1 + '<p>10AM. Saturday, 10/20/18<br></p>';
+          html1 = html1 + '<p>10AM. Saturday, 10/20/18<br>We look forward to seeing you there!</p>';
+
           html1 = html1 + '<p>Gamba Ristorante<br>455 E. 84th Ave.<br>Merillville, IN 46410<br></p>';
 
-          html1 = html1 + '<a href=\'https://twn-app.herokuapp.com/images/LostBoyFound.pdf\'>Click for event flyer</a>'
-          html1 = html1 + '<p><br>We look forward to seeing you there!<br></p>'
-          html1 = html1 + '<strong>Chicagoland Immigrant Welcome Network</strong><br>824 Hoffman St. | Hammond, IN 46327<br>219.932.4800 (ext. 106)</p><p><a href="https://twitter.com/TheWelcomeNet">Follow</a> the Welcome Network on Twitter<br><a href="https://www.facebook.com/TheWelcomeNetwork">Like</a> the Welcome Network on Facebook</p><p><a href="http://www.thewelcomenet.org/">thewelcomenet.org</a></p>';
+          html1 = html1 + '<a href=\'https://twn-app.herokuapp.com/images/LostBoyFound.pdf\'>Click for event flyer<br><br></a>'
+          html1 = html1 + '<strong>CHICAGOLAND IMMIGRANT WELCOME NETOWORK</strong><br>824 Hoffman St. | Hammond, IN 46327<br>219.932.4800 (ext. 106)</p><p><a href="https://twitter.com/TheWelcomeNet">Follow</a> the Welcome Network on Twitter<br><a href="https://www.facebook.com/TheWelcomeNetwork">Like</a> the Welcome Network on Facebook</p><p><a href="http://www.thewelcomenet.org/">thewelcomenet.org</a></p>';
 
           var mailOptions = {
             from: "Daniel Tabion<" + global.myAppVars.TWN_EMAIL_BOT + ">",
