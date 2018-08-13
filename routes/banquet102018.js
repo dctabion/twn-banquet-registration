@@ -209,7 +209,7 @@ router.post('/orderConfirmed', function(req, res, next) {
           html1 = html1 + '<a class="flyer-anchor" href=\'https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\'><img class=\"flyer-image\" src=\"https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\" width=\"77px\" height=\"100px\" alt=\"Event Flyer\"></img></a>';
           html1 = html1 + '<p>Click for event flyer</p><br>';
           html1 = html1 + '<h3>CHICAGOLAND IMMIGRANT WELCOME NETWORK</h3>';
-          html1 = html1 + '<p>824 Hoffman St. | Hammond, IN 46327219.932.4800 (ext. 106)</p>';
+          html1 = html1 + '<p>824 Hoffman St. | Hammond, IN 46327 | 219-276-3764</p>';
           html1 = html1 + '<a href=\"http://www.thewelcomenet.org/\"><img class=\"icon\" src=\"https://twn-app.herokuapp.com/images/TWN_logo.png\" height=\"65px\" width=\"140px\"></a>';
           html1 = html1 + '<a href=\"https://twitter.com/TheWelcomeNet\"><img class=\"icon\" src=\"https://twn-app.herokuapp.com/images/iconTwitter.png\" height=\"50px\" alt=\"Twitter\"></a>';
 
