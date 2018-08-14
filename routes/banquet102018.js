@@ -84,9 +84,9 @@ router.post('/doRegister', function(req, res, next) {
     zipCode: req.body.zipCode,
     affiliation: req.body.affiliation,
     paymentMethod: req.body.paymentMethod,
-    numGuests: req.body.numGuests,
+    numGuests: guests.length,
     guests: guests,
-    amountOwed: "$" + (guests.length * 40)
+    amountOwed: (guests.length * 40)
   });
 });
 
@@ -197,7 +197,9 @@ router.post('/orderConfirmed', function(req, res, next) {
                            registrant.guests[count].firstName + " " +
                            registrant.guests[count].lastName + "\n";
           }
-          adminMsgBody = adminMsgBody + "Seats Needed: " + registrant.guests.length;
+          adminMsgBody = adminMsgBody + "Payment: " +
+                         registrant.guests.length +
+                         ' seats x $40 = $' + (registrant.guests.length * 40) +"\n";
 
           // Send message to administrator and developer
           console.log('Send message to admin and developer');
@@ -214,9 +216,6 @@ router.post('/orderConfirmed', function(req, res, next) {
             }
             console.log('Email sent: ' + info.response);
           });
-
-
-
 
           // Send message to new registrant
           console.log('Send message to new registrant');
@@ -241,6 +240,13 @@ router.post('/orderConfirmed', function(req, res, next) {
           html1 = html1 + 'Gamba Ristorante<br>455 E. 84th Ave.<br>Merillville, IN 46410</p><br>';
           html1 = html1 + '<a class="flyer-anchor" href=\'https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\'><img class=\"flyer-image\" src=\"https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\" width=\"77px\" height=\"100px\" alt=\"Event Flyer\"></img></a>';
           html1 = html1 + '<p>Click for event flyer</p><br>';
+
+          html1 = html1 + '<h3>ORDER SUMMARY</h3>';
+          html1 = html1 + '<p>Amount ' +
+                          ( (registrant.paymentMethod == 'check') ? 'paid' : 'owed' ) +
+                          ": $" +
+                          (registrant.guests.length * 40);
+
           html1 = html1 + '<h3>CHICAGOLAND IMMIGRANT WELCOME NETWORK</h3>';
           html1 = html1 + '<p>824 Hoffman St. | Hammond, IN 46327 | 219-276-3764</p>';
           html1 = html1 + '<a href=\"http://www.thewelcomenet.org/\"><img class=\"icon\" src=\"https://twn-app.herokuapp.com/images/TWN_logo.png\" height=\"65px\" width=\"140px\"></a>';
@@ -256,8 +262,8 @@ router.post('/orderConfirmed', function(req, res, next) {
             // text: 'Welcome to the Welcome Net!',
             html: html1,
             replyTo: global.myAppVars.TWN_EMAIL_ADMIN
-
           }
+
           // send mail with defined transport object
           transporter.sendMail(mailOptions, function(error, info){
             if(error){
