@@ -85,7 +85,8 @@ router.post('/doRegister', function(req, res, next) {
     affiliation: req.body.affiliation,
     paymentMethod: req.body.paymentMethod,
     numGuests: req.body.numGuests,
-    guests: guests
+    guests: guests,
+    amountOwed: "$" + (guests.length * 40)
   });
 });
 
@@ -192,9 +193,9 @@ router.post('/orderConfirmed', function(req, res, next) {
           adminMsgBody = adminMsgBody + "Guest List:\n";
           var count;
           for (count = 0; count < registrant.guests.length; count ++) {
-            adminMsgBody = adminMsgBody + "    " +
+            adminMsgBody = adminMsgBody + "    Seat " + (count + 1) + ": " +
                            registrant.guests[count].firstName + " " +
-                           registrant.guests[count].lastName + "\n\n";
+                           registrant.guests[count].lastName + "\n";
           }
           adminMsgBody = adminMsgBody + "Seats Needed: " + registrant.guests.length;
 
