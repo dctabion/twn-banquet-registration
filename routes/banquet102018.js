@@ -189,7 +189,14 @@ router.post('/orderConfirmed', function(req, res, next) {
           adminMsgBody = adminMsgBody + "Affiliation: " + registrant.affiliation + "\n";
           adminMsgBody = adminMsgBody + "Payment Method: " + registrant.paymentMethod + "\n";
 
-
+          adminMsgBody = adminMsgBody + "Guest List:\n";
+          var count;
+          for (count = 0; count < registrant.guests.length; count ++) {
+            adminMsgBody = adminMsgBody + "    " +
+                           registrant.guests[count].firstName + " " +
+                           registrant.guests[count].lastName + "\n\n";
+          }
+          adminMsgBody = adminMsgBody + "Seats Needed: " + registrant.guests.length;
 
           // Send message to administrator and developer
           console.log('Send message to admin and developer');
