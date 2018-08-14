@@ -166,13 +166,38 @@ router.post('/orderConfirmed', function(req, res, next) {
           console.log('created new registrant in DB!');
           /* Send confirmation emails */
 
+          // Build admin & developer notification
+          var adminMsgBody = "";
+          if (process.env.NODE_ENV != 'production') {
+            adminMsgBody = adminMsgBody + "---------From local dev environment (test)-----------\n\n";
+          }
+          adminMsgBody = adminMsgBody + "NEW REGISTRANT\n";
+          adminMsgBody = adminMsgBody + registrant.firstName + ' ' + registrant.lastName + "\n";
+          adminMsgBody = adminMsgBody + registrant.phoneNumber + "\n";
+          adminMsgBody = adminMsgBody + registrant.emailAddress + "\n";
+          if (registrant.address1) {
+            adminMsgBody = adminMsgBody + registrant.address1 + "\n";
+          }
+          if (registrant.address2) {
+            adminMsgBody = adminMsgBody + registrant.address2 + "\n";
+          }
+          adminMsgBody = adminMsgBody +
+                         registrant.city + ", " +
+                         registrant.state + " " +
+                         registrant.zipCode + "\n";
+
+          adminMsgBody = adminMsgBody + "Affiliation: " + registrant.affiliation + "\n";
+          adminMsgBody = adminMsgBody + "Payment Method: " + registrant.paymentMethod + "\n";
+
+
+
           // Send message to administrator and developer
           console.log('Send message to admin and developer');
           var mailOptions = {
             from: global.myAppVars.TWN_EMAIL_BOT,
             to: global.myAppVars.TWN_EMAIL_ADMIN + ", " + global.myAppVars.TWN_EMAIL_DEVELOPER,
             subject: 'New 10/20/18 Banquet Registration',
-            text: registrant.firstName + ' ' + registrant.lastName + ' has registered!\n'
+            text: adminMsgBody
           }
           // send mail with defined transport object
           transporter.sendMail(mailOptions, function(error, info){
