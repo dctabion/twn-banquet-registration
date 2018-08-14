@@ -225,6 +225,20 @@ router.post('/orderConfirmed', function(req, res, next) {
           html1 = html1 + '<h3>THANK YOU!</h3>';
           html1 = html1 + '<p>We are excited to present speaker, Sudanese "Lost Boy" and Episcopalian Minister, Reverand Zachariah Char. We are looking forward to seeing you at the banquet and appreciate your support of the Welcome Network!</p><br>';
 
+          // Order summary
+          html1 = html1 + '<h3>ORDER SUMMARY</h3>';
+          html1 = html1 + '<p>Amount ' +
+                          ( (registrant.paymentMethod == 'check') ? 'owed' : 'paid online' ) +
+                          ": $" +
+                          (registrant.guests.length * 40);
+          html1 = html1 + '<p>';
+          for (count = 0; count < guests.length; count ++ ) {
+            html1 = html1 + 'Seat ' + (count + 1) + ": " +
+                    guests[count].firstName + ' ' + guests[count].lastName + '<br>';
+          }
+          html1 = html1 + '<br></p>';
+
+          // Pay by check
           if (registrant.paymentMethod == "check") {
             html1 = html1 + '<h3>PAYMENT</h3>';
             html1 = html1 + '<p>Please make checks payable to:<i><br>Chicagoland Immigrant Welcome Network</i><br>(or feel free to use the abbreviation <i>\"CIWN\" instead</i>)<br><br>';
@@ -235,18 +249,15 @@ router.post('/orderConfirmed', function(req, res, next) {
 
           }
 
-          html1 = html1 + '<h3>EVENT</h3>';
+          // Event Info
+          html1 = html1 + '<h3>EVENT INFO</h3>';
           html1 = html1 + '<p>10AM. Saturday, 10/20/18<br>';
           html1 = html1 + 'Gamba Ristorante<br>455 E. 84th Ave.<br>Merillville, IN 46410</p><br>';
           html1 = html1 + '<a class="flyer-anchor" href=\'https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\'><img class=\"flyer-image\" src=\"https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\" width=\"77px\" height=\"100px\" alt=\"Event Flyer\"></img></a>';
           html1 = html1 + '<p>Click for event flyer</p><br>';
 
-          html1 = html1 + '<h3>ORDER SUMMARY</h3>';
-          html1 = html1 + '<p>Amount ' +
-                          ( (registrant.paymentMethod == 'check') ? 'paid' : 'owed' ) +
-                          ": $" +
-                          (registrant.guests.length * 40);
 
+          // Close
           html1 = html1 + '<h3>CHICAGOLAND IMMIGRANT WELCOME NETWORK</h3>';
           html1 = html1 + '<p>824 Hoffman St. | Hammond, IN 46327 | 219-276-3764</p>';
           html1 = html1 + '<a href=\"http://www.thewelcomenet.org/\"><img class=\"icon\" src=\"https://twn-app.herokuapp.com/images/TWN_logo.png\" height=\"65px\" width=\"140px\"></a>';
