@@ -1,6 +1,37 @@
 function validateForm() {
   console.log('validateForm()');
 
+  /* ------- Validate Phone Number ------ */
+  var phoneNumberEl = document.getElementById('phoneNumber');
+  var phoneNumber = phoneNumberEl.value;
+  console.log(`phoneNumber: ${phoneNumber}`);
+  var phoneNumberDigitsOnly = phoneNumber.replace(/\D/g,'');
+  console.log(`phoneNumberDigitsOnly: ${phoneNumberDigitsOnly}`);
+  // Not right number of digits
+  phoneNumberEl.value = phoneNumberDigitsOnly;
+  var phoneNumberString = phoneNumberDigitsOnly.toString();
+
+  // Wrong number of digits in phone number
+  if (phoneNumberString.length != 10) {
+    console.log('Incorrect # of digits');
+    alert('Please fix your phone number.');
+    return false;
+  }
+
+  // Correct #.  Reformat with parenthesis
+  else {
+    var phoneNumberString = phoneNumberDigitsOnly.toString();
+    reformatedPhoneNumber =
+      '(' +
+      phoneNumberString.slice(0,3) +
+      ')' +
+      phoneNumberString.slice(3,6) +
+      '-' +
+      phoneNumberString.slice(6,10);
+      phoneNumberEl.value = reformatedPhoneNumber;
+  }
+
+  /* ------- Validate Guest List ------ */
   var fname, lname;
   var numGuests = 0;
   var i;
