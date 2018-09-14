@@ -227,10 +227,18 @@ router.post('/orderConfirmed', function(req, res, next) {
 
           // Order summary
           html1 = html1 + '<h3>ORDER SUMMARY</h3>';
-          html1 = html1 + '<p>Amount ' +
-                          ( (registrant.paymentMethod == 'check') ? 'owed' : 'paid online' ) +
-                          ": $" +
-                          (registrant.guests.length * 40);
+          if (registrant.paymentMethod == 'check') {
+            html1 = html1 + '<p>Amount owed: $' + registrant.guests.length * 40;
+          }
+          else {
+            html1 = html1 + '<p>Amount: $' + registrant.guests.length * 40;
+            html1 = html1 + '<br>If you have not completed payment, we will follow up with you!<br>';
+          }
+
+          // html1 = html1 + '<p>Amount ' +
+          //                 ( (registrant.paymentMethod == 'check') ? 'owed' : 'paid online' ) +
+          //                 ": $" +
+          //                 (registrant.guests.length * 40);
           html1 = html1 + '<p>';
           for (count = 0; count < guests.length; count ++ ) {
             html1 = html1 + 'Seat ' + (count + 1) + ": " +
