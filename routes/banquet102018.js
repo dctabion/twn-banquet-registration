@@ -221,7 +221,8 @@ router.post('/orderConfirmed', function(req, res, next) {
           console.log('Send message to new registrant');
           console.log('new registrant email: ', registrant.emailAddress)
 
-          var html1 = '<p>Hello, ' + registrant.firstName + " " + registrant.lastName + "!</p>"
+          var html1 = '<p>Hello, ' + registrant.firstName + " " + registrant.lastName + "!<br>If you have not completed payment, we will follow up with you!<br></p>"
+
           html1 = html1 + '<h3>THANK YOU!</h3>';
           html1 = html1 + '<p>We are excited to present speaker, Sudanese "Lost Boy" and Episcopalian Minister, Reverand Zachariah Char. We are looking forward to seeing you at the banquet and appreciate your support of the Welcome Network!</p><br>';
 
@@ -260,7 +261,7 @@ router.post('/orderConfirmed', function(req, res, next) {
           // Event Info
           html1 = html1 + '<h3>EVENT INFO</h3>';
           html1 = html1 + '<p>10AM. Saturday, 10/20/18<br>';
-          html1 = html1 + 'Gamba Ristorante<br>455 E. 84th Ave.<br>Merillville, IN 46410</p><br>';
+          html1 = html1 + 'Gamba Ristorante<br>455 E. 84th Ave.<br>Merrillville, IN 46410</p><br>';
           html1 = html1 + '<a class="flyer-anchor" href=\'https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\'><img class=\"flyer-image\" src=\"https://twn-app.herokuapp.com/images/ThumbNailLostBoyFound.jpg\" width=\"77px\" height=\"100px\" alt=\"Event Flyer\"></img></a>';
           html1 = html1 + '<p>Click for event flyer</p><br>';
 
